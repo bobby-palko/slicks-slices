@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from './Footer';
 import Nav from './Nav';
 
 export default function Layout() {
@@ -6,6 +7,7 @@ export default function Layout() {
     <div>
       <Nav />
       <p>I am page content!</p>
+      <Footer />
     </div>
   );
 }
