@@ -1,11 +1,34 @@
 import React from 'react';
-import Nav from '../components/Nav';
+import { graphql } from 'gatsby';
+import BeerList from '../components/BeerList';
+import SEO from '../components/SEO';
 
-export default function BeersPage() {
+export default function BeersPage({ data }) {
+  const beers = data.beers.nodes;
   return (
-    <div>
-      <Nav />
-      <p>I'm the beers page!</p>
-    </div>
+    <>
+      <SEO title={`Beers! We have ${data.beers.nodes.length} beers in stock`} />
+      <h2 className="center">
+        We have {data.beers.nodes.length} beers available! Dine in only!
+      </h2>
+      <BeerList beers={beers} />
+    </>
   );
 }
+
+export const query = graphql`
+  query BeerQuery {
+    beers: allBeer {
+      nodes {
+        id
+        name
+        price
+        image
+        rating {
+          reviews
+          average
+        }
+      }
+    }
+  }
+`;
