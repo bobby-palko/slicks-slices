@@ -38,7 +38,7 @@ const SlicemasterStyles = styled.div`
 
 export function SingleSlicemaster({ slicemaster }) {
   return (
-    <SlicemasterStyles key={slicemaster.id}>
+    <SlicemasterStyles>
       <Link to={`/slicemaster/${slicemaster.slug.current}`}>
         <h2>
           <span className="mark">{slicemaster.name}</span>
@@ -55,7 +55,7 @@ export default function SlicemasterList({ slicemasters }) {
     <>
       <SlicemasterGridStyles>
         {slicemasters.map((slicemaster) => (
-          <SingleSlicemaster slicemaster={slicemaster} />
+          <SingleSlicemaster slicemaster={slicemaster} key={slicemaster.id} />
         ))}
       </SlicemasterGridStyles>
     </>
